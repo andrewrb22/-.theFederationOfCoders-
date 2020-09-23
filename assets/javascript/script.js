@@ -1,11 +1,11 @@
-var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-  });
+// carousel code from materialize
+$('.carousel.carousel-slider').carousel({
+  fullWidth: true,
+  indicators: true
+});
 
-  // Or with jQuery
+$(".btn").on("click", function(){
+  //testing the buttons
+  alert("you clicked ");
 
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true,
-    indicators: true
-  });
+})
