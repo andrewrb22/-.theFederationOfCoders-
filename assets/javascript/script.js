@@ -6,6 +6,6 @@ $('.carousel.carousel-slider').carousel({
 
 $(".btn").on("click", function(){
   //testing the buttons
-  alert("you clicked " + $(this).toString(attr("data-food")));
+  alert("you clicked ");
 
 })
