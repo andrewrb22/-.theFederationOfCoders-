@@ -33,7 +33,7 @@ $.ajax({
 
   })
 
-function winePairing (food) {
+function winePairing(food) {
   // request wine information/ steak pairing
   $.ajax({
     url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
@@ -42,4 +42,9 @@ function winePairing (food) {
     console.log(wineEl);
   })
 
+  function randomnumber(max) {
+    return Math.floor(Math.random() * Math.floor(max) + 1);
+  }
 }
+
+console.log(randomnumber(3));
