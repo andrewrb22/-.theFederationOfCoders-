@@ -38,3 +38,8 @@ method : "GET"
    console.log(wineEl);
   })
 
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max)+1);
+  }
+  
+  console.log(getRandomInt(3))
