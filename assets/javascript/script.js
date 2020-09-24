@@ -6,7 +6,9 @@ $('.carousel.carousel-slider').carousel({
 
 $(".btn").on("click", function () {
   //testing the buttons
-  alert("you clicked ");
+  var food = $(this).attr("data-food");
+  console.log(food);
+  winePairing(food);
 })
 
 
@@ -30,11 +32,14 @@ $.ajax({
     console.log(response);
 
   })
-// request wine information/ steak pairing
+
+function winePairing (food) {
+  // request wine information/ steak pairing
   $.ajax({
-url : "https://api.spoonacular.com/food/wine/pairing?food=steak&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
-method : "GET"
+    url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
+    method: "GET"
   }).then(function wine(wineEl) {
-   console.log(wineEl);
+    console.log(wineEl);
   })
 
+}
