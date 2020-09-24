@@ -9,6 +9,7 @@ $(".btn").on("click", function () {
   var food = $(this).attr("data-food");
   console.log(food);
   winePairing(food);
+  foodRecipe(food);
 })
 
 
@@ -18,12 +19,11 @@ setInterval(function () {
   $('.carousel').carousel('next');
 }, 5000); // every 5 seconds
 
-var myAPI = "344c39f083fc4d8dac4a76e6e15bd196"
 
-var queryURL = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + myAPI;
 
+function foodRecipe(food){
 $.ajax({
-  url: queryURL,
+  url: "https://api.spoonacular.com/recipes/complexSearch?query="  + food +  "&apiKey=344c39f083fc4d8dac4a76e6e15bd196",
   method: "GET"
 })
 
@@ -32,6 +32,7 @@ $.ajax({
     console.log(response);
 
   })
+}
 
 function winePairing(food) {
   // request wine information/ steak pairing
