@@ -39,9 +39,11 @@ function winePairing(food) {
     method: "GET"
   }).then(function wine(wineEl) {
     console.log(wineEl);
-    console.log(wineEl.pairingText);
     // deleting anything that was previously written
     $("#wine-info-p").text("");
+    $(".winetitle").text("");
+    
+    var arrLength
     // adding wine description to page
     $("#wine-info-p").text(wineEl.pairingText);
   });
