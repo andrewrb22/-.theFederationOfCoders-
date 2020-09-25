@@ -28,6 +28,8 @@ function foodRecipe(food) {
 
     .then(function (foodInfo) {
       console.log(foodInfo);
+      $(".recipe").text(foodInfo.results[0].title);
+      $(".cardImage").attr("src",foodInfo.results[0].image)
     })
 }
 
