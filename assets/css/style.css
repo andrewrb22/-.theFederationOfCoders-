@@ -2,6 +2,7 @@ body {
     background-image: url(../images/brickwall.png);
     background-color: lightgray;
     color: black;
+    font-family: 'Raleway', sans-serif;
    }
 
 .cardImage{
