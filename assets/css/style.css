@@ -1,6 +1,12 @@
-.cardImage {
-  width: 200px;
-  height: 200px;
+body {
+    background-image: url(../images/brickwall.png);
+    background-color: lightgray;
+    color: black;
+   }
+
+.cardImage{
+    width: 200px;
+    height: 200px;
 }
 
 header {
@@ -21,5 +27,6 @@ h5 {
 }
 
 #footerMargin {
+  logo
   margin-bottom: 0;
 }
