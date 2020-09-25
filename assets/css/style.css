@@ -1,4 +1,3 @@
-
 body {
     background-image: url(../images/brickwall.png);
     background-color: lightgray;
@@ -11,19 +10,23 @@ body {
 }
 
 header {
-    height: 60px;
+  height: 60px;
 }
 
 .brand-logo {
-    font-size: 35px;
-    margin-top: 0;
+  position: relative;
+  bottom: 600px;
+  font-size: 35px;
+  font-family: "Diplomata SC", cursive;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 h5 {
-    padding-top: -10px;
+  padding-top: -10px;
 }
 
 #footerMargin {
-    margin-bottom: 0;
+  logo
+  margin-bottom: 0;
 }
-

@@ -1,101 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/a4148159df.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap"
+      rel="stylesheet"
+    />
+    <title>Wine&Dines</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <script src="https://kit.fontawesome.com/a4148159df.js" crossorigin="anonymous"></script>
-  <title>Wine&Dines</title>
-</head>
-
-<body>
-  <div class="container-fluid" style="color: #e4e5e8">
-    <header class="center-align nav-wrapper z-depth-4" style="background-color: #4d0011">
-      <p class="brand-logo" style="color: #e4e5e8">
-        <strong><em>Wine&Dines</em></strong>
-      </p>
-    </header>
-
-    <div class="row">
-      <div class="col s12">
-        <div class="carousel carousel-slider center span">
-          <div class="carousel-fixed-item center">
-            <button class="btn waves-effect white grey-text darken-text-2" data-food="chicken">
-              <i class="fas fa-drumstick-bite"></i>
-            </button>
-            <button class="btn waves-effect white grey-text darken-text-2" data-food="fish">
-              <i class="fas fa-fish"></i>
-            </button>
-            <button class="btn waves-effect white grey-text darken-text-2" data-food="pork">
-              <i class="fas fa-bacon"></i>
-            </button>
-            <button class="btn waves-effect white grey-text darken-text-2" data-food="beef">
-              <i class="fas fa-hamburger"></i>
-            </button>
-          </div>
-          <div class="carousel-item white-text" href="#one!">
-            <img src="./assets/images/steak.jpg" alt="steak with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#two!">
-            <img src="./assets/images/pork .jpg" alt="pork with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#three!">
-            <img src="./assets/images/chicken.jpg" alt="chicken  with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#four!">
-            <img src="./assets/images/fish.jpg" alt="fish with wine" />
+  <body>
+    <div class="container-fluid" style="color: #e4e5e8">
+      <div class="row">
+        <div class="col s12">
+          <div class="carousel carousel-slider center span">
+            <div class="carousel-fixed-item center">
+              <p class="brand-logo" style="color: #C39148">
+                <strong><em>Wine & Dines</em></strong>
+              </p>
+              <button
+                class="btn waves-effect white grey-text darken-text-2"
+                data-food="chicken"
+              >
+                <i class="fas fa-drumstick-bite"></i>
+              </button>
+              <button
+                class="btn waves-effect white grey-text darken-text-2"
+                data-food="fish"
+              >
+                <i class="fas fa-fish"></i>
+              </button>
+              <button
+                class="btn waves-effect white grey-text darken-text-2"
+                data-food="pork"
+              >
+                <i class="fas fa-bacon"></i>
+              </button>
+              <button
+                class="btn waves-effect white grey-text darken-text-2"
+                data-food="beef"
+              >
+                <i class="fas fa-hamburger"></i>
+              </button>
+            </div>
+            <div class="carousel-item white-text" href="#one!">
+              <img src="./assets/images/steak.jpg" alt="steak with wine" />
+            </div>
+            <div class="carousel-item white-text" href="#two!">
+              <img src="./assets/images/pork .jpg" alt="pork with wine" />
+            </div>
+            <div class="carousel-item white-text" href="#three!">
+              <img src="./assets/images/chicken.jpg" alt="chicken  with wine" />
+            </div>
+            <div class="carousel-item white-text" href="#four!">
+              <img src="./assets/images/fish.jpg" alt="fish with wine" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="card col s4 offset-s1">
-        <div class="card-image">
-          <img class="cardImage" src="./assets/images/cookbook.jpg" alt="a cook book" />
-          <span class="recipe" style="color: black">recipes</span>
-          <p id="recipe-p">heres where your recipe will show up</p>
+      <div class="row">
+        <div class="card col s4 offset-s1">
+          <div class="card-image">
+            <img
+              class="cardImage"
+              src="./assets/images/cookbook.jpg"
+              alt="a cook book"
+            />
+            <span class="recipe" style="color: black">recipes</span>
+            <p>heres where your recipe will show up</p>
+          </div>
+          <div class="card-action" id="recipelink">
+            <a href="#">This is a link to recipe if works</a>
+          </div>
         </div>
-        <div class="card-action" id="recipelink">
-          <a href="#">This is a link to recipe if works</a>
+
+        <div class="card col s4 offset-s2">
+          <div class="card-image">
+            <img
+              class="cardImage"
+              src="./assets/images/wine.jpg"
+              alt="two galsses of wine infront of a plate of grapes"
+            />
+            <span class="winetitle" style="color: black">your wine choice</span>
+            <p>
+              wine info Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+          <div id="winelink " class="card-action">
+            <a href="#">wine link?</a>
+          </div>
         </div>
       </div>
 
-      <div class="card col s4 offset-s2">
-        <div class="card-image">
-          <img class="cardImageWine" src="./assets/images/wine.jpg"
-            alt="two galsses of wine infront of a plate of grapes" />
-          <span class="winetitle" style="color: black">your wine choice</span>
-          <p id="wine-info-p">
-            wine info Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+      <footer
+        class="page-footer center-align"
+        style="background-color: #4d0011"
+      >
+        <h5 style="color: #e4e5e8">
+          <em>Footer Content</em>
+        </h5>
+        <div class="z-depth-4" style="background-color: #C39148">
+          <p id="footerMargin" style="color: #e4e5e8">© 2014 Copyright Text</p>
         </div>
-        <div id="winelink " class="card-action">
-          <a href="#">wine link?</a>
-        </div>
-      </div>
+      </footer>
     </div>
-  </div>
-  </div>
-
-
-  <footer class="page-footer center-align" style="background-color: #4d0011">
-    <h5 style="color: #e4e5e8">
-      <em>Footer Content</em>
-    </h5>
-    <div class=" z-depth-4" style="background-color: #4d0011">
-      <p id="footerMargin" style="color: #e4e5e8">© 2014 Copyright Text</p>
-    </div>
-  </footer>
-  </div>
-
-  <script src="https://kit.fontawesome.com/a4148159df.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="./assets/javascript/script.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/javascript/script.js"></script>
+  </body>
 </html>
