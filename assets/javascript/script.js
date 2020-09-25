@@ -30,6 +30,8 @@ $.ajax({
   .then(function (response) {
 
     console.log(response);
+let foodTitle = $("#card-recipe")
+let title = reponse.title
 
   })
 }
