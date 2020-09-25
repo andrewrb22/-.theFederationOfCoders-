@@ -1,5 +1,29 @@
+
 body {
     background-image: url(../images/brickwall.png);
     background-color: lightgray;
     color: black;
    }
+
+.cardImage{
+    width: 200px;
+    height: 200px;
+}
+
+header {
+    height: 60px;
+}
+
+.brand-logo {
+    font-size: 35px;
+    margin-top: 0;
+}
+
+h5 {
+    padding-top: -10px;
+}
+
+#footerMargin {
+    margin-bottom: 0;
+}
+
