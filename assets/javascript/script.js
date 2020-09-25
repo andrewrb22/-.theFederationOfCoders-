@@ -40,14 +40,27 @@ function winePairing(food) {
     method: "GET"
   }).then(function wine(wineEl) {
     console.log(wineEl);
-    
+    // getting the wine selection
+    var wineSelection = wineEl.pairedWines;
+    // capitalize the first letter of each string in the wine selection
+    for(var i = 0; i < wineSelection.length; i++) {
+      wineSelection[i] = capitalize(wineSelection[i]);
+    }
+    // making array a string with the elements separated by commas
+    var wineString = wineSelection.join(", ");
+    // adding selection to page
+    $(".winetitle").text(wineString);
     // adding wine description to page
     $("#wine-info-p").text(wineEl.pairingText);
   });
 }
 
-function randomnumber(max) {
-  return Math.floor(Math.random() * Math.floor(max) + 1);
+function capitalize (string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log(randomnumber(3));
+function randomnumber() {
+  return Math.floor((Math.random() * 100) + 1);
+}
+
+console.log(randomnumber());
