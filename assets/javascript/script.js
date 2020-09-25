@@ -13,8 +13,8 @@ $(document).ready(function () {
     //testing the buttons
     var food = $(this).attr("data-food");
     console.log(food);
-    // winePairing(food);
-    // foodRecipe(food);
+    winePairing(food);
+    foodRecipe(food);
     wineRecommendation();
   })
 
