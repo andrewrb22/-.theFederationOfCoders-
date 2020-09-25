@@ -20,32 +20,37 @@ setInterval(function () {
 }, 5000); // every 5 seconds
 
 
-
-function foodRecipe(food){
-$.ajax({
-  url: "https://api.spoonacular.com/recipes/complexSearch?query="  + food +  "&apiKey=344c39f083fc4d8dac4a76e6e15bd196",
-  method: "GET"
-})
-
-  .then(function (response) {
-
-    console.log(response);
-
+function foodRecipe(food) {
+  $.ajax({
+    url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=344c39f083fc4d8dac4a76e6e15bd196",
+    method: "GET"
   })
+
+    .then(function (foodInfo) {
+      console.log(foodInfo);
+    })
 }
 
 function winePairing(food) {
+
   // request wine information/ steak pairing
   $.ajax({
     url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
     method: "GET"
   }).then(function wine(wineEl) {
     console.log(wineEl);
-  })
+    // deleting anything that was previously written
+    $("#wine-info-p").text("");
+    $(".winetitle").text("");
+    
+    var arrLength
+    // adding wine description to page
+    $("#wine-info-p").text(wineEl.pairingText);
+  });
+}
 
-  function randomnumber(max) {
-    return Math.floor(Math.random() * Math.floor(max) + 1);
-  }
+function randomnumber(max) {
+  return Math.floor(Math.random() * Math.floor(max) + 1);
 }
 
 console.log(randomnumber(3));
