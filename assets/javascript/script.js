@@ -10,6 +10,7 @@ $(".btn").on("click", function () {
   console.log(food);
   winePairing(food);
   foodRecipe(food);
+ 
 })
 
 
@@ -18,6 +19,21 @@ $('.carousel').carousel();
 setInterval(function () {
   $('.carousel').carousel('next');
 }, 5000); // every 5 seconds
+
+function summaryId(summary) {
+  
+  $.ajax({
+   
+    url:"https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=344c39f083fc4d8dac4a76e6e15bd196",
+    method: "GET"
+
+
+  }).then(function foodSummary(response) {
+    console.log(response)
+    
+  })
+  
+}
 
 
 function foodRecipe(food) {
@@ -30,7 +46,13 @@ function foodRecipe(food) {
       console.log(foodInfo);
       $(".recipe").text(foodInfo.results[0].title);
       $(".cardImage").attr("src",foodInfo.results[0].image)
+    
+      console.log(foodInfo.results[0].id);
+      let summary = foodInfo.results[0].id ;
+      summaryId(summary);
+
     })
+
 }
 
 function winePairing(food) {
