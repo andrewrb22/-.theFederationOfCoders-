@@ -43,7 +43,7 @@ $(document).ready(function () {
   function winePairing(food) {
     // request wine information/ pairing
     $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey2;
+      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey2,
       method: "GET"
     }).then(function wine(wineEl) {
       console.log(wineEl);
@@ -65,15 +65,15 @@ $(document).ready(function () {
   }
 
   function wineRecommendation() {
-    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=merlot&number=2&apiKey" + apiKey3;
-    // request wine recommendation information
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (recommendation) {
-      console.log(recommendation)
+    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=merlot&number=2&apiKey=" + apiKey3;
+      // request wine recommendation information
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      }).then(function (recommendation) {
+        console.log(recommendation)
 
-    })
+      })
   }
 
   function capitalize(string) {
