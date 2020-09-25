@@ -43,7 +43,7 @@ $(document).ready(function () {
   function winePairing(food) {
     // request wine information/ pairing
     $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey2;
+      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey2,
       method: "GET"
     }).then(function wine(wineEl) {
       console.log(wineEl);
