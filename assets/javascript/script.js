@@ -27,11 +27,12 @@ $.ajax({
   method: "GET"
 })
 
-  .then(function (response) {
+  .then(function food (foodEl){
 
-    console.log(response);
-let foodTitle = $("#card-recipe")
-let title = reponse.title
+    console.log(foodEl);
+
+$(".card-image-food").attr("src", foodEl.result[0].image);
+$("recipe").text
 
   })
 }
