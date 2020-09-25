@@ -23,12 +23,12 @@ setInterval(function () {
 
 function foodRecipe(food){
 $.ajax({
-  url: "https://api.spoonacular.com/recipes/complexSearch?query="  + food +  "&apiKey=344c39f083fc4d8dac4a76e6e15bd196",
+  url: "https://api.spoonacular.com/recipes/complexSearch?query="  + food +  "&apiKey=68373bec57f24a56a3ae46f9079adde1",
   method: "GET"
 })
 
   .then(function (response) {
-
+    $("#card-recipe").append(response.tital);
     console.log(response);
 
   })
@@ -47,5 +47,3 @@ function winePairing(food) {
     return Math.floor(Math.random() * Math.floor(max) + 1);
   }
 }
-
-console.log(randomnumber(3));
