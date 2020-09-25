@@ -57,7 +57,7 @@ function summaryId(summary) {
 
     })
 
-},
+})
 
 function winePairing(food) {
 
@@ -82,12 +82,12 @@ function winePairing(food) {
   });
 }
 
-      .then(function (foodInfo) {
+      then(function (foodInfo) {
         console.log(foodInfo);
         $(".recipe").text(foodInfo.results[0].title);
         $(".cardImage").attr("src", foodInfo.results[0].image)
       })
-  },
+  }
 
   function winePairing(food) {
     // request wine information/ pairing
