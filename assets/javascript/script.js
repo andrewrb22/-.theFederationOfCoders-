@@ -28,6 +28,7 @@ function foodRecipe(food) {
 
     .then(function (foodInfo) {
       console.log(foodInfo);
+      
     })
 }
 
