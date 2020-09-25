@@ -20,10 +20,12 @@ setInterval(function () {
 }, 5000); // every 5 seconds
 
 
+
 function foodRecipe(food) {
   $.ajax({
     url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=344c39f083fc4d8dac4a76e6e15bd196",
     method: "GET"
+
   })
 
     .then(function (foodInfo) {
@@ -60,8 +62,10 @@ function capitalize (string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
 function randomnumber() {
   return Math.floor((Math.random() * 100) + 1);
 }
 
 console.log(randomnumber());
+

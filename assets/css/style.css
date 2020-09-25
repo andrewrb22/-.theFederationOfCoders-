@@ -1,3 +1,10 @@
+
+body {
+    background-image: url(../images/brickwall.png);
+    background-color: lightgray;
+    color: black;
+   }
+
 .cardImage{
     width: 200px;
     height: 200px;
@@ -19,3 +26,4 @@ h5 {
 #footerMargin {
     margin-bottom: 0;
 }
+
