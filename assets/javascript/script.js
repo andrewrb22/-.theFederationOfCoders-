@@ -25,20 +25,69 @@ $(document).ready(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
+function summaryId(summary) {
+  
+  $.ajax({
+   
+    url:"https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=344c39f083fc4d8dac4a76e6e15bd196",
+    method: "GET"
+
+
+  }).then(function foodSummary(response) {
+    console.log(response)
+    
+  })
+  
+}
+
 
   function foodRecipe(food) {
     $.ajax({
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
 
+    .then(function (foodInfo) {
+      console.log(foodInfo);
+      $(".recipe").text(foodInfo.results[0].title);
+      $(".cardImage").attr("src",foodInfo.results[0].image)
+    
+      console.log(foodInfo.results[0].id);
+      let summary = foodInfo.results[0].id ;
+      summaryId(summary);
+
     })
+
+},
+
+function winePairing(food) {
+
+  // request wine information/ steak pairing
+  $.ajax({
+    url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
+    method: "GET"
+  }).then(function wine(wineEl) {
+    console.log(wineEl);
+    // getting the wine selection
+    var wineSelection = wineEl.pairedWines;
+    // capitalize the first letter of each string in the wine selection
+    for(var i = 0; i < wineSelection.length; i++) {
+      wineSelection[i] = capitalize(wineSelection[i]);
+    }
+    // making array a string with the elements separated by commas
+    var wineString = wineSelection.join(", ");
+    // adding selection to page
+    $(".winetitle").text(wineString);
+    // adding wine description to page
+    $("#wine-info-p").text(wineEl.pairingText);
+  });
+}
 
       .then(function (foodInfo) {
         console.log(foodInfo);
         $(".recipe").text(foodInfo.results[0].title);
         $(".cardImage").attr("src", foodInfo.results[0].image)
       })
-  }
+  },
 
   function winePairing(food) {
     // request wine information/ pairing
