@@ -87,7 +87,7 @@ function summaryId(summary) {
         $(".recipe").text(foodInfo.results[0].title);
         $(".cardImage").attr("src", foodInfo.results[0].image)
       })
-  };
+  })
 
   function winePairing(food) {
     // request wine information/ pairing
@@ -138,5 +138,5 @@ function summaryId(summary) {
 
 
 
-})
+
 
