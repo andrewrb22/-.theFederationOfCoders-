@@ -9,7 +9,7 @@ $(document).ready(function () {
     indicators: true
   });
 
-  $(".btn").on("click", function () {
+  $(".button").on("click", function () {
     //testing the buttons
     var food = $(this).attr("data-food");
     console.log(food);
