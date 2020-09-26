@@ -1,4 +1,27 @@
 $(document).ready(function () {
+  // adding scroll down button
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
   // our api key
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
@@ -8,7 +31,7 @@ $(document).ready(function () {
     fullWidth: true,
     indicators: true
   });
-
+  
   $(".btn").on("click", function () {
     //testing the buttons
     var food = $(this).attr("data-food");
@@ -46,7 +69,7 @@ function summaryId(summary) {
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
 
-    .then(function (foodInfo) {
+    }) .then(function (foodInfo) {
       console.log(foodInfo);
       $(".recipe").text(foodInfo.results[0].title);
       $(".cardImage").attr("src",foodInfo.results[0].image)
@@ -57,7 +80,7 @@ function summaryId(summary) {
 
     })
 
-});
+
   };
   function winePairing(food) {
 
@@ -82,12 +105,8 @@ function summaryId(summary) {
   });
 }
 
-      then(function (foodInfo) {
-        console.log(foodInfo);
-        $(".recipe").text(foodInfo.results[0].title);
-        $(".cardImage").attr("src", foodInfo.results[0].image)
-      })
-  })
+   
+
 
   function winePairing(food) {
     // request wine information/ pairing
