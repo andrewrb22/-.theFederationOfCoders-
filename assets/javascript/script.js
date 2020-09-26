@@ -29,7 +29,7 @@ function summaryId(summary) {
   
   $.ajax({
    
-    url:"https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=344c39f083fc4d8dac4a76e6e15bd196",
+    url:"https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2 ,
     method: "GET"
 
 
@@ -38,7 +38,7 @@ function summaryId(summary) {
     
   })
   
-}
+};
 
 
   function foodRecipe(food) {
@@ -57,9 +57,9 @@ function summaryId(summary) {
 
     })
 
-})
-
-function winePairing(food) {
+});
+  };
+  function winePairing(food) {
 
   // request wine information/ steak pairing
   $.ajax({
@@ -87,7 +87,7 @@ function winePairing(food) {
         $(".recipe").text(foodInfo.results[0].title);
         $(".cardImage").attr("src", foodInfo.results[0].image)
       })
-  }
+  };
 
   function winePairing(food) {
     // request wine information/ pairing
@@ -138,5 +138,5 @@ function winePairing(food) {
 
 
 
-});
+})
 
