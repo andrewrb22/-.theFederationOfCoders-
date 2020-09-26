@@ -21,7 +21,8 @@
             <p class="brand-logo" style="color: #C39148">
               <strong><em>Wine & Dines</em></strong>
             </p>
-            <p class="brand-logo-icon" style="color: #C39148"><i class="fas fa-wine-glass-alt"></i></i></p>
+            <p class="brand-logo-icon" style="color: #C39148"> <a href="#section2"><i class="fas fa-wine-glass-alt"></i>
+            </p>
             <button class="button btn-large waves-effect white" data-food="chicken" style="color: #C39148">
               <i class="fas fa-drumstick-bite"></i>
             </button>
@@ -50,28 +51,31 @@
         </div>
       </div>
     </div>
-    <div class="row">
+
+    <div class="row" id="section2">
       <div class="card col s4 offset-s1">
         <div class="card-image">
           <img class="cardImage" src="./assets/images/cookbook.jpg" alt="a cook book" />
-          <span class="recipe" style="color: black">recipes</span>
-          <ul id="ingredient-list" style="color: black;"></ul>
+          <span class="recipe" style="color: black">Your randomized recipe:</span>
+          <p style="color: black;">
+            Recipe information will be displayed here.
+          </p>
         </div>
         <div class="card-action" id="recipelink">
-          <a href="#">This is a link to recipe if works</a>
+          <a href="#">Recipe link</a>
         </div>
       </div>
       <div class="card col s4 offset-s2">
         <div class="card-image">
           <img class="cardImage" src="./assets/images/wine.jpg"
             alt="two galsses of wine infront of a plate of grapes" />
-          <span class="winetitle" style="color: black">your wine choice</span>
+          <span class="winetitle" style="color: black">Your wine recommendations:</span>
           <p id="wine-info-p" style="color: black;">
-            wine info Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Wine pairing information will be displayed here.
           </p>
         </div>
         <div id="winelink " class="card-action">
-          <a href="#">wine link?</a>
+          <a href="#">Wine link</a>
         </div>
       </div>
     </div>
