@@ -16,7 +16,7 @@ $(document).ready(function () {
     winePairing(food);
     foodRecipe(food);
     wineRecommendation();
-  })
+  });
 
 
   //auto play here and its in millaseconds
@@ -25,69 +25,58 @@ $(document).ready(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
-function summaryId(summary) {
-  
-  $.ajax({
-   
-    url:"https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2 ,
-    method: "GET"
+  function summaryId(summary) {
 
+    $.ajax({
 
-  }).then(function foodSummary(response) {
-    console.log(response)
-    
-  })
-  
-};
+      url: "https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2,
+      method: "GET"
+
+    }).then(function foodSummary(response) {
+      console.log(response)
+
+    });
+  };
 
 
   function foodRecipe(food) {
     $.ajax({
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
-
-    .then(function (foodInfo) {
-      console.log(foodInfo);
-      $(".recipe").text(foodInfo.results[0].title);
-      $(".cardImage").attr("src",foodInfo.results[0].image)
-    
-      console.log(foodInfo.results[0].id);
-      let summary = foodInfo.results[0].id ;
-      summaryId(summary);
-
-    })
-
-});
-  };
-  function winePairing(food) {
-
-  // request wine information/ steak pairing
-  $.ajax({
-    url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
-    method: "GET"
-  }).then(function wine(wineEl) {
-    console.log(wineEl);
-    // getting the wine selection
-    var wineSelection = wineEl.pairedWines;
-    // capitalize the first letter of each string in the wine selection
-    for(var i = 0; i < wineSelection.length; i++) {
-      wineSelection[i] = capitalize(wineSelection[i]);
-    }
-    // making array a string with the elements separated by commas
-    var wineString = wineSelection.join(", ");
-    // adding selection to page
-    $(".winetitle").text(wineString);
-    // adding wine description to page
-    $("#wine-info-p").text(wineEl.pairingText);
-  });
-}
-
-      then(function (foodInfo) {
+    }).then(function (foodInfo) {
         console.log(foodInfo);
         $(".recipe").text(foodInfo.results[0].title);
         $(".cardImage").attr("src", foodInfo.results[0].image)
+
+        console.log(foodInfo.results[0].id);
+        let summary = foodInfo.results[0].id;
+        summaryId(summary);
+
       })
-  })
+  }
+
+  function winePairing(food) {
+
+    // request wine information/ steak pairing
+    $.ajax({
+      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
+      method: "GET"
+    }).then(function wine(wineEl) {
+      console.log(wineEl);
+      // getting the wine selection
+      var wineSelection = wineEl.pairedWines;
+      // capitalize the first letter of each string in the wine selection
+      for (var i = 0; i < wineSelection.length; i++) {
+        wineSelection[i] = capitalize(wineSelection[i]);
+      }
+      // making array a string with the elements separated by commas
+      var wineString = wineSelection.join(", ");
+      // adding selection to page
+      $(".winetitle").text(wineString);
+      // adding wine description to page
+      $("#wine-info-p").text(wineEl.pairingText);
+    });
+  }
 
   function winePairing(food) {
     // request wine information/ pairing
@@ -115,14 +104,14 @@ function summaryId(summary) {
 
   function wineRecommendation() {
     var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=merlot&number=2&apiKey=" + apiKey3;
-      // request wine recommendation information
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function (recommendation) {
-        console.log(recommendation)
+    // request wine recommendation information
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (recommendation) {
+      console.log(recommendation)
 
-      })
+    });
   }
 
   function capitalize(string) {
@@ -136,7 +125,4 @@ function summaryId(summary) {
 
   console.log(randomnumber());
 
-
-
-
-
+});
