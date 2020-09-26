@@ -66,12 +66,7 @@ $(document).ready(function () {
         // put each ingredient on the page
         $("#ingredient-list").append(liEl);
       }
-
-    }).then(function foodSummary(response) {
-      console.log(response)
-
-    })
-
+    });
   };
 
   function recipeLink(ID) {
@@ -96,16 +91,10 @@ $(document).ready(function () {
       console.log(foodInfo);
       // add recipe title to page
       $(".recipe").text(foodInfo.results[0].title);
-<<<<<<< HEAD
-      // getting ID of recipe
-=======
-
-
-      console.log(foodInfo.results[0].id);
->>>>>>> 8bae7fc732a098226a2f458677f38d48ba23685d
       let recipeId = foodInfo.results[0].id;
-      // getting ingredients of the recipe with the ID
+      // getting ingredients of the recipe with its ID
       getIngredients(recipeId);
+      // getting link of the recipe with its ID
       recipeLink(recipeId);
     })
   }
