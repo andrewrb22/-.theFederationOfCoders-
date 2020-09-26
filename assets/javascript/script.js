@@ -88,8 +88,8 @@ $(document).ready(function () {
     });
   }
 
-  function wineRecommendation(wine) {
-    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=2&apiKey=" + apiKey3;
+  function wineRecommendation() {
+    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=&number=2&apiKey=" + apiKey3;
     // request wine recommendation information
     $.ajax({
       url: queryURL,
