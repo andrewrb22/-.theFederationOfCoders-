@@ -1,4 +1,27 @@
 $(document).ready(function () {
+  // on click for drop down
+  $("#drop").on('click', function (event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function () {
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    };
+  });
+
   // our api key
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
@@ -10,7 +33,7 @@ $(document).ready(function () {
     indicators: true
   });
 
-  $(".button").on("click", function () {
+  $(".btn").on("click", function () {
     //testing the buttons
     var food = $(this).attr("data-food");
     console.log(food);
@@ -44,7 +67,11 @@ $(document).ready(function () {
         $("#ingredient-list").append(liEl);
       }
 
-    });
+    }).then(function foodSummary(response) {
+      console.log(response)
+
+    })
+
   };
 
   function recipeLink(ID) {
@@ -69,7 +96,13 @@ $(document).ready(function () {
       console.log(foodInfo);
       // add recipe title to page
       $(".recipe").text(foodInfo.results[0].title);
+<<<<<<< HEAD
       // getting ID of recipe
+=======
+
+
+      console.log(foodInfo.results[0].id);
+>>>>>>> 8bae7fc732a098226a2f458677f38d48ba23685d
       let recipeId = foodInfo.results[0].id;
       // getting ingredients of the recipe with the ID
       getIngredients(recipeId);
@@ -110,7 +143,7 @@ $(document).ready(function () {
     }).then(function (recommendation) {
       console.log(recommendation)
 
-    });
+    })
   }
 
   function capitalize(string) {
