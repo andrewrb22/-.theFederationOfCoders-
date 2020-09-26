@@ -82,7 +82,7 @@ $(document).ready(function () {
     }).then(function (foodInfo) {
       console.log(foodInfo);
       $(".recipe").text(foodInfo.results[0].title);
-      $(".cardImage").attr("src", foodInfo.results[0].image)
+      
 
       console.log(foodInfo.results[0].id);
       let recipeId = foodInfo.results[0].id;
