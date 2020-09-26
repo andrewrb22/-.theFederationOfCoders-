@@ -26,14 +26,15 @@ $(document).ready(function () {
   }, 5000); // every 5 seconds
 
   function summaryId(summary) {
-
+    // retrieving the summary reci
     $.ajax({
-
       url: "https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2,
       method: "GET"
-
     }).then(function foodSummary(response) {
       console.log(response)
+      var recipeSummary = response.summary;
+      // adding the summary of the recipe to the page
+      $("#recipe-summary").text(recipeSummary);
 
     });
   };
@@ -53,29 +54,6 @@ $(document).ready(function () {
         summaryId(summary);
 
       })
-  }
-
-  function winePairing(food) {
-
-    // request wine information/ steak pairing
-    $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
-      method: "GET"
-    }).then(function wine(wineEl) {
-      console.log(wineEl);
-      // getting the wine selection
-      var wineSelection = wineEl.pairedWines;
-      // capitalize the first letter of each string in the wine selection
-      for (var i = 0; i < wineSelection.length; i++) {
-        wineSelection[i] = capitalize(wineSelection[i]);
-      }
-      // making array a string with the elements separated by commas
-      var wineString = wineSelection.join(", ");
-      // adding selection to page
-      $(".winetitle").text(wineString);
-      // adding wine description to page
-      $("#wine-info-p").text(wineEl.pairingText);
-    });
   }
 
   function winePairing(food) {
