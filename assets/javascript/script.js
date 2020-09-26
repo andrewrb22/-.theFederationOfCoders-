@@ -16,7 +16,7 @@ $(document).ready(function () {
     console.log(food);
     winePairing(food);
     foodRecipe(food);
-    wineRecommendation();
+    // wineRecommendation();
   });
 
 
