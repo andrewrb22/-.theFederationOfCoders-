@@ -3,6 +3,7 @@ $(document).ready(function () {
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
   var apiKey3 = "68373bec57f24a56a3ae46f9079adde1"
+  var apiKey4 = "c467d8c1351947afb0b49dc69c417b88"
   // carousel code from materialize
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
@@ -15,7 +16,7 @@ $(document).ready(function () {
     console.log(food);
     winePairing(food);
     foodRecipe(food);
-    wineRecommendation();
+    // wineRecommendation();
   });
 
 
@@ -25,16 +26,23 @@ $(document).ready(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
-  function summaryId(summary) {
-    // retrieving the summary reci
+  function getIngredients(ID) {
+    // retrieving the ingredients of the recipe
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey4,
       method: "GET"
     }).then(function foodSummary(response) {
       console.log(response)
-      var recipeSummary = response.summary;
-      // adding the summary of the recipe to the page
-      $("#recipe-summary").text(recipeSummary);
+      // get the array of the ingredients 
+      var ingredientsArr = response.ingredients;
+      // traverse the ingredients array
+      for (var i = 0; i < ingredientsArr.length; i++) {
+        // create li to put the ingredients in it
+        var liEl = $("<li>");
+        liEl.text((i + 1) + ". " + ingredientsArr[i].name);
+        // put each ingredient on the page
+        $("#ingredient-list").append(liEl);
+      }
 
     });
   };
@@ -45,15 +53,15 @@ $(document).ready(function () {
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
     }).then(function (foodInfo) {
-        console.log(foodInfo);
-        $(".recipe").text(foodInfo.results[0].title);
-        $(".cardImage").attr("src", foodInfo.results[0].image)
+      console.log(foodInfo);
+      $(".recipe").text(foodInfo.results[0].title);
+      $(".cardImage").attr("src", foodInfo.results[0].image)
 
-        console.log(foodInfo.results[0].id);
-        let summary = foodInfo.results[0].id;
-        summaryId(summary);
+      console.log(foodInfo.results[0].id);
+      let recipeId = foodInfo.results[0].id;
+      getIngredients(recipeId);
 
-      })
+    })
   }
 
   function winePairing(food) {
@@ -80,8 +88,8 @@ $(document).ready(function () {
     });
   }
 
-  function wineRecommendation() {
-    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=merlot&number=2&apiKey=" + apiKey3;
+  function wineRecommendation(wine) {
+    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=2&apiKey=" + apiKey3;
     // request wine recommendation information
     $.ajax({
       url: queryURL,
