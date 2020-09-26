@@ -1,6 +1,6 @@
 $(document).ready(function () {
   // on click for drop down
-  $("#drop").on('click', function(event) {
+  $("#drop").on('click', function (event) {
 
     // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== "") {
@@ -14,14 +14,14 @@ $(document).ready(function () {
       // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
       $('html, body').animate({
         scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
+      }, 800, function () {
+
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
     };
   });
-  
+
   // our api key
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
@@ -33,7 +33,7 @@ $(document).ready(function () {
     indicators: true
   });
 
-  $(".btn").on("click", function () {
+  $(".button").on("click", function () {
     //testing the buttons
     var food = $(this).attr("data-food");
     console.log(food);
@@ -66,28 +66,36 @@ $(document).ready(function () {
         // put each ingredient on the page
         $("#ingredient-list").append(liEl);
       }
+    });
+  };
 
-  }).then(function foodSummary(response) {
-    console.log(response)
-    
-  })
-  
-};
+  function recipeLink(ID) {
+    // getting the recipe link
+    $.ajax({
+      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey,
+      method: "GET"
+    }).then(function (link) {
+      console.log(link);
+      // adding the link of the recipe to the "Here!" label of the recipe card
+      $("#recipe-link").attr("href", link.sourceUrl);
+    })
+  }
 
 
   function foodRecipe(food) {
+    // getting recipe info
     $.ajax({
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
     }).then(function (foodInfo) {
       console.log(foodInfo);
+      // add recipe title to page
       $(".recipe").text(foodInfo.results[0].title);
-      $(".cardImage").attr("src", foodInfo.results[0].image)
-
-      console.log(foodInfo.results[0].id);
       let recipeId = foodInfo.results[0].id;
+      // getting ingredients of the recipe with its ID
       getIngredients(recipeId);
-
+      // getting link of the recipe with its ID
+      recipeLink(recipeId);
     })
   }
 
@@ -124,7 +132,7 @@ $(document).ready(function () {
     }).then(function (recommendation) {
       console.log(recommendation)
 
-      })
+    })
   }
 
   function capitalize(string) {
