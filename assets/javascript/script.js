@@ -1,31 +1,9 @@
 $(document).ready(function () {
-  // adding scroll down button
-  $("a").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-
   // our api key
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
   var apiKey3 = "68373bec57f24a56a3ae46f9079adde1"
+  var apiKey4 = "c467d8c1351947afb0b49dc69c417b88"
   // carousel code from materialize
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
@@ -48,15 +26,23 @@ $(document).ready(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
-  function summaryId(summary) {
-
+  function getIngredients(ID) {
+    // retrieving the ingredients of the recipe
     $.ajax({
-
-      url: "https://api.spoonacular.com/recipes/" + summary + "/summary?apiKey=" + apiKey2,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey4,
       method: "GET"
-
     }).then(function foodSummary(response) {
       console.log(response)
+      // get the array of the ingredients 
+      var ingredientsArr = response.ingredients;
+      // traverse the ingredients array
+      for (var i = 0; i < ingredientsArr.length; i++) {
+        // create li to put the ingredients in it
+        var liEl = $("<li>");
+        liEl.text((i + 1) + ". " + ingredientsArr[i].name);
+        // put each ingredient on the page
+        $("#ingredient-list").append(liEl);
+      }
 
     });
   };
@@ -67,38 +53,15 @@ $(document).ready(function () {
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
     }).then(function (foodInfo) {
-        console.log(foodInfo);
-        $(".recipe").text(foodInfo.results[0].title);
-        $(".cardImage").attr("src", foodInfo.results[0].image)
+      console.log(foodInfo);
+      $(".recipe").text(foodInfo.results[0].title);
+      $(".cardImage").attr("src", foodInfo.results[0].image)
 
-        console.log(foodInfo.results[0].id);
-        let summary = foodInfo.results[0].id;
-        summaryId(summary);
+      console.log(foodInfo.results[0].id);
+      let recipeId = foodInfo.results[0].id;
+      getIngredients(recipeId);
 
-      })
-  }
-
-  function winePairing(food) {
-
-    // request wine information/ steak pairing
-    $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=3be041b3f9c84afaa2bb5ee16a7b4c01",
-      method: "GET"
-    }).then(function wine(wineEl) {
-      console.log(wineEl);
-      // getting the wine selection
-      var wineSelection = wineEl.pairedWines;
-      // capitalize the first letter of each string in the wine selection
-      for (var i = 0; i < wineSelection.length; i++) {
-        wineSelection[i] = capitalize(wineSelection[i]);
-      }
-      // making array a string with the elements separated by commas
-      var wineString = wineSelection.join(", ");
-      // adding selection to page
-      $(".winetitle").text(wineString);
-      // adding wine description to page
-      $("#wine-info-p").text(wineEl.pairingText);
-    });
+    })
   }
 
   function winePairing(food) {
@@ -125,8 +88,8 @@ $(document).ready(function () {
     });
   }
 
-  function wineRecommendation() {
-    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=merlot&number=2&apiKey=" + apiKey3;
+  function wineRecommendation(wine) {
+    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=2&apiKey=" + apiKey3;
     // request wine recommendation information
     $.ajax({
       url: queryURL,
@@ -148,4 +111,4 @@ $(document).ready(function () {
 
   console.log(randomnumber());
 
-})
+});
