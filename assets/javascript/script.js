@@ -47,20 +47,33 @@ $(document).ready(function () {
     });
   };
 
+  function recipeLink(ID) {
+    // getting the recipe link
+    $.ajax({
+      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey,
+      method: "GET"
+    }).then(function (link) {
+      console.log(link);
+      // adding the link of the recipe to the "Here!" label of the recipe card
+      $("#recipe-link").attr("href", link.sourceUrl);
+    })
+  }
+
 
   function foodRecipe(food) {
+    // getting recipe info
     $.ajax({
       url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
       method: "GET"
     }).then(function (foodInfo) {
       console.log(foodInfo);
+      // add recipe title to page
       $(".recipe").text(foodInfo.results[0].title);
-      $(".cardImage").attr("src", foodInfo.results[0].image)
-
-      console.log(foodInfo.results[0].id);
+      // getting ID of recipe
       let recipeId = foodInfo.results[0].id;
+      // getting ingredients of the recipe with the ID
       getIngredients(recipeId);
-
+      recipeLink(recipeId);
     })
   }
 
