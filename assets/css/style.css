@@ -2,7 +2,7 @@ body {
     background-image: url(../images/footer_lodyas/footer_lodyas.png);
     background-color: lightgray;
     color: black;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Old Standard TT', serif;
    }
    .selectProtein{
     top: 10%;
@@ -122,4 +122,12 @@ h5 {
 		transform: scale(0.95);
 	
 	}
+}
+#description{
+  color: #C39148;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
 }
