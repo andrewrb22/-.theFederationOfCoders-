@@ -4,6 +4,11 @@ body {
     color: black;
     font-family: 'Raleway', sans-serif;
    }
+
+.button {
+  color: #C39148;
+}
+ 
 #recipecard{
   background-color: transparent;
   box-shadow: 1px 1px 10px 10px #C39148;
@@ -15,6 +20,15 @@ body {
 .cardImage{
     width: 200px;
     height: 200px;
+    padding-top: 0.5cm;
+}
+
+.brand-div {
+  top: 0;
+}
+
+.button-div {
+  margin-top: 10px;
 }
 
 header {
@@ -23,18 +37,21 @@ header {
 
 .brand-logo {
   position: absolute;
-  bottom: 550px;
-  right: 420px;
+  top: 10%;
+  right: 0;
+  left: 0;
   font-size: 45px;
   font-family: "Diplomata SC", cursive;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #C39148
 }
 
 .brand-logo-icon {
+  color: #C39148;
   position: absolute;
-  bottom: 350px;
-  right: 715px;
+  bottom: 10%;
+  right: 0;
+  left: 0;
   font-size: 50px;
   font-family: "Diplomata SC", cursive;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
@@ -46,6 +63,15 @@ h5 {
 }
 
 #footerMargin {
-  
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .brand-logo {
+    font-size: 25px;
+  }
+
+  .brand-logo-icon {
+    font-size: 30px;
+  }
 }

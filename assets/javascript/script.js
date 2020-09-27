@@ -30,7 +30,6 @@ $(document).ready(function () {
   // carousel code from materialize
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true
   });
 
   $(".button").on("click", function () {
@@ -41,17 +40,19 @@ $(document).ready(function () {
     foodRecipe(food);
   });
 
-
-  //auto play here and its in millaseconds
-  $('.carousel').carousel();
+  // auto play here and its in millaseconds
+  $('.carousel').carousel({
+  });
   setInterval(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
   function getIngredients(ID) {
+    // clearing the list before anything else
+    $("#ingredient-list").empty();
     // retrieving the ingredients of the recipe
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey4,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey,
       method: "GET"
     }).then(function foodSummary(response) {
       console.log(response)
@@ -71,7 +72,7 @@ $(document).ready(function () {
   function recipeLink(ID) {
     // getting the recipe link
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey4,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey2,
       method: "GET"
     }).then(function (link) {
       console.log(link);
@@ -84,7 +85,7 @@ $(document).ready(function () {
   function foodRecipe(food) {
     // getting recipe info
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&number=50&apiKey=" + apiKey4,
+      url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&number=50&apiKey=" + apiKey3,
       method: "GET"
     }).then(function (foodInfo) {
       console.log(foodInfo);
@@ -105,7 +106,7 @@ $(document).ready(function () {
     $("#wine-link").empty();
     // request wine information/ pairing
     $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey3,
+      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey4,
       method: "GET"
     }).then(function wine(wineEl) {
       console.log(wineEl);
@@ -130,7 +131,7 @@ $(document).ready(function () {
   function wineRecommendation(wine) {
     // request wine recommendation information
     $.ajax({
-      url: "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=50&apiKey=" + apiKey3,
+      url: "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=50&apiKey=" + apiKey,
       method: "GET"
     }).then(function (recommendation) {
       console.log(recommendation)
@@ -138,7 +139,7 @@ $(document).ready(function () {
       var wineLink = $("<a>");
       // get random number
       var numb = randomNumber(recommendation.totalFound)
-      
+
       console.log(numb)
 
       wineName.text(recommendation.recommendedWines[numb].title + ": " + recommendation.recommendedWines[numb].price + " ");
