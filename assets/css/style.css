@@ -4,6 +4,17 @@ body {
     color: black;
     font-family: 'Raleway', sans-serif;
    }
+   .selectProtein{
+    top: 10%;
+    right: 0;
+    left: 0;
+    font-size: 25px;
+    font-family: "Diplomata SC", cursive;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: #C39148}
+ .video{
+  box-shadow: 1px 1px 10px 10px #C39148;
+ }
 
 .button {
   color: #C39148;
