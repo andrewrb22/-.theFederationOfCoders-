@@ -22,7 +22,7 @@ $(document).ready(function () {
     };
   });
 
-  // our api key
+  // our api keys
   var apiKey = "344c39f083fc4d8dac4a76e6e15bd196"
   var apiKey2 = "3be041b3f9c84afaa2bb5ee16a7b4c01"
   var apiKey3 = "68373bec57f24a56a3ae46f9079adde1"
@@ -40,12 +40,25 @@ $(document).ready(function () {
     foodRecipe(food);
   });
 
-  // auto play here and its in millaseconds
+  // auto play here and its in milliseconds
   $('.carousel').carousel({
   });
   setInterval(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
+
+ 
+
+  function wineDescription(recipe) {
+    $.get("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAVRP3mcZrmMjABWbqD-6khzolOQuwuiLk&part=snippet&type=video&maxResults=1&q=" + recipe,
+    function(response){
+      console.log(response);
+      var videoId = response.items[0].id.videoId;
+      $("#video-link").attr("href", "https://www.youtube.com/embed/" + videoId);
+    }) 
+  }
+
+
 
   function getIngredients(ID) {
     // clearing the list before anything else
@@ -98,6 +111,8 @@ $(document).ready(function () {
       getIngredients(recipeId);
       // getting link of the recipe with its ID
       recipeLink(recipeId);
+      // getting youtube video of the recipe
+      wineDescription(foodInfo.results[numb].title);
     })
   }
 
