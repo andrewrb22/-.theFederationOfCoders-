@@ -20,6 +20,14 @@ body {
   color: #C39148;
 }
  
+#description {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  left: 0;
+  font-size: 20px;
+}
+
 #recipecard{
   background-color: transparent;
   box-shadow: 1px 1px 10px 10px #C39148;
