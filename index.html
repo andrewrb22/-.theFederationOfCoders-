@@ -4,89 +4,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <script src="https://kit.fontawesome.com/a4148159df.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Diplomata+SC&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Wine&Dines</title>
 </head>
 
 <body>
-  <div class="container-fluid" style="color: #e4e5e8">
-    <div class="row">
-      <div class="col s12">
-        <div class="carousel carousel-slider center span">
-          <div class="carousel-fixed-item center">
-            <p class="brand-logo" style="color: #C39148">
-              <strong><em>Wine & Dines</em></strong>
-            </p>
-            <p class="brand-logo-icon"> <a id="drop" href="#section2"><i class="fas fa-angle-double-down" style="color: #C39148"></i>
-            </p>
-            <button class="button btn-large waves-effect white" data-food="chicken" style="color: #C39148">
-              <i class="fas fa-drumstick-bite"></i>
-            </button>
-            <button class="button btn-large waves-effect white" data-food="fish" style="color: #C39148">
-              <i class="fas fa-fish"></i>
-            </button>
-            <button class="button btn-large waves-effect white" data-food="pork" style="color: #C39148">
-              <i class="fas fa-bacon"></i>
-            </button>
-            <button class="button btn-large waves-effect white" data-food="beef" style="color: #C39148">
-              <i class="fas fa-hamburger"></i>
-            </button>
-          </div>
-          <div class="carousel-item white-text" href="#one!">
-            <img src="./assets/images/steak.jpg" alt="steak with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#two!">
-            <img src="./assets/images/pork .jpg" alt="pork with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#three!">
-            <img src="./assets/images/chicken.jpg" alt="chicken  with wine" />
-          </div>
-          <div class="carousel-item white-text" href="#four!">
-            <img src="./assets/images/fish.jpg" alt="fish with wine" />
-          </div>
-        </div>
+  <main style="color: #e4e5e8">
+    <div class="carousel carousel-slider">
+      <div class="carousel-fixed-item center brand-div">
+        <p class="brand-logo flow-text">
+          <strong><em>Wine & Dines <i class="fas fa-wine-glass-alt"></i></em></strong>
+        </p>
+        <a class="brand-logo-icon fas fa-angle-double-down" id="drop" href="#section2"></a>
+      </div>
+      <a class="carousel-item" href="#one!">
+        <img class="carousel-img" src="./assets/images/steak.jpg" alt="steak with wine" />
+      </a>
+      <a class="carousel-item" href="#two!">
+        <img class="carousel-img" src="./assets/images/pork .jpg" alt="pork with wine" />
+      </a>
+      <a class="carousel-item" href="#three!">
+        <img class="carousel-img" src="./assets/images/chicken.jpg" alt="chicken  with wine" />
+      </a>
+      <a class="carousel-item" href="#four!">
+        <img class="carousel-img" src="./assets/images/fish.jpg" alt="fish with wine" />
+      </a>
+    </div>
+
+    <div class="row button-div" id="section2">
+      <div class="col s12 center-align">
+        <button class="button btn-large waves-effect white" data-food="chicken">
+          <i class="fas fa-drumstick-bite"></i>
+        </button>
+        <button class="button btn-large waves-effect white" data-food="fish">
+          <i class="fas fa-fish"></i>
+        </button>
+        <button class="button btn-large waves-effect white" data-food="pork">
+          <i class="fas fa-bacon"></i>
+        </button>
+        <button class="button btn-large waves-effect white" data-food="beef">
+          <i class="fas fa-hamburger"></i>
+        </button>
       </div>
     </div>
 
-    <div class="row" id="section2">
-      <div class="card col s4 offset-s1">
+    <div class="row">
+      <div class="card col s12 m4  offset-m1" id="recipecard">
         <div class="card-image">
           <img class="cardImage" src="./assets/images/cookbook.jpg" alt="a cook book" />
-          <span class="recipe" style="color: black">Your randomized recipe:</span>
-          <ul id="ingredient-list" style="color: black;">
+          <span class="recipe" style="color: white" , style="font-weight: bold;">Your randomized recipe:</span>
+          <ul id="ingredient-list" style="color: white">
           </ul>
         </div>
-        <div class="card-action" id="recipelink">
-          <a href="#">Recipe link</a>
+        <div class="card-action">
+          <p>For more information on this recipe click <a id="recipe-link" target="_blank" href="#">Here!</a></p>
         </div>
       </div>
-      <div class="card col s4 offset-s2">
+      <div class="card col s12 m4 offset-m2" id="winecard">
         <div class="card-image">
           <img class="cardImage" src="./assets/images/wine.jpg"
-            alt="two galsses of wine infront of a plate of grapes" />
-          <span class="winetitle" style="color: black">Your wine recommendations:</span>
-          <p id="wine-info-p" style="color: black;">
+            alt="two glasses of wine infront of a plate of grapes" />
+          <span class="winetitle" style="color: white" , style="font-weight: bold;">Your wine recommendations:</span>
+          <p id="wine-info-p" style="color: white;">
             Wine pairing information will be displayed here.
           </p>
         </div>
-        <div id="winelink " class="card-action">
-          <a href="#">Wine link</a>
+        <div id="wine-link" class="card-action">
         </div>
       </div>
     </div>
     <footer class="page-footer center-align" style="background-color: #4d0011">
       <h5 style="color: #e4e5e8">
-        <em>Footer Content</em>
+        <em>Wine & Dines</em>
       </h5>
       <div class="z-depth-4" style="background-color: #C39148">
-        <p id="footerMargin" style="color: #e4e5e8">© 2014 Copyright Text</p>
+        <p id="footerMargin" style="color: #e4e5e8">© 2020 The Federation of Coders</p>
       </div>
     </footer>
-  </div>
+  </main>
+
+  <script src="https://kit.fontawesome.com/a4148159df.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./assets/javascript/script.js"></script>
 </body>

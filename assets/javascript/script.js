@@ -30,7 +30,6 @@ $(document).ready(function () {
   // carousel code from materialize
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true
   });
 
   $(".button").on("click", function () {
@@ -39,20 +38,21 @@ $(document).ready(function () {
     console.log(food);
     winePairing(food);
     foodRecipe(food);
-    // wineRecommendation();
   });
 
-
-  //auto play here and its in millaseconds
-  $('.carousel').carousel();
+  // auto play here and its in millaseconds
+  $('.carousel').carousel({
+  });
   setInterval(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
   function getIngredients(ID) {
+    // clearing the list before anything else
+    $("#ingredient-list").empty();
     // retrieving the ingredients of the recipe
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey4,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/ingredientWidget.json?apiKey=" + apiKey,
       method: "GET"
     }).then(function foodSummary(response) {
       console.log(response)
@@ -72,7 +72,7 @@ $(document).ready(function () {
   function recipeLink(ID) {
     // getting the recipe link
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey,
+      url: "https://api.spoonacular.com/recipes/" + ID + "/information?includeNutrition=false&apiKey=" + apiKey2,
       method: "GET"
     }).then(function (link) {
       console.log(link);
@@ -85,13 +85,15 @@ $(document).ready(function () {
   function foodRecipe(food) {
     // getting recipe info
     $.ajax({
-      url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&apiKey=" + apiKey,
+      url: "https://api.spoonacular.com/recipes/complexSearch?query=" + food + "&number=50&apiKey=" + apiKey3,
       method: "GET"
     }).then(function (foodInfo) {
       console.log(foodInfo);
+      // get a random number
+      var numb = randomNumber(50);
       // add recipe title to page
-      $(".recipe").text(foodInfo.results[0].title);
-      let recipeId = foodInfo.results[0].id;
+      $(".recipe").text(foodInfo.results[numb].title);
+      let recipeId = foodInfo.results[numb].id;
       // getting ingredients of the recipe with its ID
       getIngredients(recipeId);
       // getting link of the recipe with its ID
@@ -100,9 +102,11 @@ $(document).ready(function () {
   }
 
   function winePairing(food) {
+    // empty div where wine links are going to go
+    $("#wine-link").empty();
     // request wine information/ pairing
     $.ajax({
-      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey2,
+      url: "https://api.spoonacular.com/food/wine/pairing?food=" + food + "&apiKey=" + apiKey4,
       method: "GET"
     }).then(function wine(wineEl) {
       console.log(wineEl);
@@ -110,6 +114,7 @@ $(document).ready(function () {
       var wineSelection = wineEl.pairedWines;
       // capitalize the first letter of each string in the wine selection
       for (var i = 0; i < wineSelection.length; i++) {
+        wineRecommendation(wineSelection[i]);
         wineSelection[i] = capitalize(wineSelection[i]);
       }
       // making array a string with the elements separated by commas
@@ -123,15 +128,27 @@ $(document).ready(function () {
     });
   }
 
-  function wineRecommendation() {
-    var queryURL = "https://api.spoonacular.com/food/wine/recommendation?wine=&number=2&apiKey=" + apiKey3;
+  function wineRecommendation(wine) {
     // request wine recommendation information
     $.ajax({
-      url: queryURL,
+      url: "https://api.spoonacular.com/food/wine/recommendation?wine=" + wine + "&number=50&apiKey=" + apiKey,
       method: "GET"
     }).then(function (recommendation) {
       console.log(recommendation)
+      var wineName = $("<p>");
+      var wineLink = $("<a>");
+      // get random number
+      var numb = randomNumber(recommendation.totalFound)
 
+      console.log(numb)
+
+      wineName.text(recommendation.recommendedWines[numb].title + ": " + recommendation.recommendedWines[numb].price + " ");
+      wineName.attr("id", "wine-name");
+      wineLink.text("Link");
+      wineLink.attr("href", recommendation.recommendedWines[numb].link);
+      wineLink.attr("target", "_blank");
+      $("#wine-link").append(wineName);
+      wineName.append(wineLink);
     })
   }
 
@@ -140,10 +157,10 @@ $(document).ready(function () {
   }
 
 
-  function randomnumber() {
-    return Math.floor((Math.random() * 100) + 1);
+  function randomNumber(max) {
+    return Math.floor(Math.random() * max);
   }
 
-  console.log(randomnumber());
+  console.log(randomNumber(50));
 
 });
