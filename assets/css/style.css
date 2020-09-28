@@ -103,6 +103,10 @@ h5 {
     height: 300px;
   }
 
+  .video {
+    width: auto;
+  }
+
   #description {
     font-size: 15px;
   }
