@@ -1,45 +1,40 @@
 body {
-    background-image: url(../images/footer_lodyas/footer_lodyas.png);
-    background-color: lightgray;
-    color: black;
-    font-family: 'Old Standard TT', serif;
-   }
-   .selectProtein{
-    top: 10%;
-    right: 0;
-    left: 0;
-    font-size: 25px;
-    font-family: "Diplomata SC", cursive;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    color: #C39148}
- .video{
+  background-image: url(../images/footer_lodyas/footer_lodyas.png);
+  background-color: lightgray;
+  color: black;
+  font-family: 'Old Standard TT', serif;
+}
+
+header {
+  height: 60px;
+}
+
+h5 {
+  padding-top: -10px;
+}
+
+.selectProtein {
+  top: 10%;
+  right: 0;
+  left: 0;
+  font-size: 25px;
+  font-family: "Diplomata SC", cursive;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #C39148
+}
+
+.video {
   box-shadow: 1px 1px 10px 10px #C39148;
- }
+}
 
 .button {
   color: #C39148;
 }
- 
-#description {
-  position: absolute;
-  top: 30%;
-  right: 0;
-  left: 0;
-  font-size: 20px;
-}
 
-#recipecard{
-  background-color: transparent;
-  box-shadow: 1px 1px 10px 10px #C39148;
-}
-#winecard{
-  background-color: transparent;
-  box-shadow: 1px 1px 10px 10px #C39148;
-}
-.cardImage{
-    width: 200px;
-    height: 200px;
-    padding-top: 0.5cm;
+.cardImage {
+  width: 200px;
+  height: 200px;
+  padding-top: 0.5cm;
 }
 
 .brand-div {
@@ -48,10 +43,6 @@ body {
 
 .button-div {
   margin-top: 10px;
-}
-
-header {
-  height: 60px;
 }
 
 .brand-logo {
@@ -73,12 +64,28 @@ header {
   left: 0;
   font-size: 50px;
   font-family: "Diplomata SC", cursive;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-h5 {
-  padding-top: -10px;
+#description {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  left: 0;
+  color: #C39148;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#recipecard {
+  background-color: transparent;
+  box-shadow: 1px 1px 10px 10px #C39148;
+}
+
+#winecard {
+  background-color: transparent;
+  box-shadow: 1px 1px 10px 10px #C39148;
 }
 
 #footerMargin {
@@ -89,45 +96,31 @@ h5 {
   .brand-logo {
     font-size: 25px;
   }
-
   .brand-logo-icon {
     font-size: 30px;
   }
-
   .carousel-img {
     height: 300px;
+  }
+
+  #description {
+    font-size: 15px;
   }
 }
 
 #drop {
-
-
-	
-	transform: scale(1);
-	animation: pulse 1s infinite;
+  transform: scale(1);
+  animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-	0% {
-		transform: scale(0.95);
-	
-	}
-
-	70% {
-		transform: scale(1);
-		
-	}
-
-	100% {
-		transform: scale(0.95);
-	
-	}
-}
-#description{
-  color: #C39148;
-  font-size: 30px;
-  font-weight: bold;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-
+  0% {
+    transform: scale(0.85);
+  }
+  70% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+  }
 }

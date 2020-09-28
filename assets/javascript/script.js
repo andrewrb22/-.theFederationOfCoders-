@@ -1,11 +1,3 @@
-$.ajax({
-  url: "https://developers.zomato.com/api/v2.1/locations?query=Winter",
-  method: "GET",
-}).then(function (response) {
-  console.log(response);
-  
-})
-
 $(document).ready(function () {
   // on click for drop down
   $("#drop").on('click', function (event) {
@@ -55,18 +47,15 @@ $(document).ready(function () {
     $('.carousel').carousel('next');
   }, 5000); // every 5 seconds
 
- 
-
-  function wineDescription(recipe) {
+  // getting video about the recipe
+  function recipeVideo(recipe) {
     $.get("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAVRP3mcZrmMjABWbqD-6khzolOQuwuiLk&part=snippet&type=video&maxResults=1&q=" + recipe,
-    function(response){
-      console.log(response);
-      var videoId = response.items[0].id.videoId;
-      $("#video-link").attr("href", "https://www.youtube.com/embed/" + videoId);
-    }) 
+      function (response) {
+        console.log(response);
+        var videoId = response.items[0].id.videoId;
+        $("#video-link").attr("href", "https://www.youtube.com/embed/" + videoId);
+      })
   }
-
-
 
   function getIngredients(ID) {
     // clearing the list before anything else
@@ -120,7 +109,7 @@ $(document).ready(function () {
       // getting link of the recipe with its ID
       recipeLink(recipeId);
       // getting youtube video of the recipe
-      wineDescription(foodInfo.results[numb].title);
+      recipeVideo(foodInfo.results[numb].title);
     })
   }
 
@@ -164,7 +153,7 @@ $(document).ready(function () {
       var numb = randomNumber(recommendation.totalFound)
 
       console.log(numb)
-
+      // getting the wine recommendations and displaying them on the page with a link where you can buy them
       wineName.text(recommendation.recommendedWines[numb].title + ": " + recommendation.recommendedWines[numb].price + " ");
       wineName.attr("id", "wine-name");
       wineLink.text("Link");
@@ -174,16 +163,14 @@ $(document).ready(function () {
       wineName.append(wineLink);
     })
   }
-
+  // capitalizes the first letter of a string
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-
+  // gives random number from 0 to given max
   function randomNumber(max) {
     return Math.floor(Math.random() * max);
   }
-
-  console.log(randomNumber(50));
 
 });
