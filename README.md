@@ -1,5 +1,5 @@
 # Wine&Dines
-https://github.com/andrewrb22/-.theFederationOfCoders-
+https://andrewrb22.github.io/-.theFederationOfCoders-/
 
 ## Technologies
 Built with Materialize, jQuery, fontawesone, spoonacular API, and youtuve API
